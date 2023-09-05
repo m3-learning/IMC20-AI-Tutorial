@@ -1,8 +1,8 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Artificial Intelligence Methods for Microscopy Analysis and Knowledge Extraction
-author: Yunseok	Kim, Rama	Vasudevan, Joshua	Agar, Ayana	Ghosh, Segei	Kalinin
+title: "Artificial Intelligence Methods for Microscopy Analysis and Knowledge Extraction"
+author: "Yunseok	Kim, Rama	Vasudevan, Joshua	Agar, Ayana	Ghosh, Segei	Kalinin"
 logo: Drexel_M3_Logo-01.png
 
 # Force re-execution of notebooks on each build.
