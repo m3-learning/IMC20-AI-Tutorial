@@ -16,5 +16,5 @@ chapters:
     title: "Physics Constrained Autoencoder"
   - file: Cycle_Consistent_Spatial_Transformer_Autoencoder/Cycle_Consistent_Spatial_Transformer_Autoencoder
     title: "Cycle Consistent Spatial Transformer Autoencoder"
-  - file: Cycle_Consistent_Spatial_Transformer_Autoencoder/Examples_in_TEM
+  - file: Cycle_Consistent_Spatial_Transformer_Autoencoder/tem
     title: "Learning Spatial Transformations in 4D STEM"
