@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>10. Tutorial: Cycle-Consistent Spatial Transforming Autoencoders &#8212; Artificial Intelligence Methods for Microscopy Analysis and Knowledge Extraction</title>
+    <title>6. Tutorial: Cycle-Consistent Spatial Transforming Autoencoders &#8212; Artificial Intelligence Methods for Microscopy Analysis and Knowledge Extraction</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/Drexel_M3_Logo-01.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="Examples_in_TEM.html" />
-    <link rel="prev" title="9. Physics Constrained Autoencoders" href="../Physics_Constrained_Autoencoders/Physics_Constrained_Autoencoder.html" />
+    <link rel="next" title="7. Learning Spatial Transformations in 4D STEM" href="Examples_in_TEM.html" />
+    <link rel="prev" title="5. Physics Constrained Autoencoders" href="../Physics_Constrained_Autoencoders/Physics_Constrained_Autoencoder.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,15 +159,12 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Intro_to_Machine_Learning/Introduction_to_Machine_Learning.html">1. Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html">2. Unsupervised Spectral Unmixing with Autoencoders</a></li>
 
 
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html">6. Unsupervised Spectral Unmixing with Autoencoders</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Physics_Constrained_Autoencoders/Physics_Constrained_Autoencoder.html">9. Physics Constrained Autoencoder</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Cycle Consistent Spatial Transformer Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Physics_Constrained_Autoencoders/Physics_Constrained_Autoencoder.html">5. Physics Constrained Autoencoder</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Cycle Consistent Spatial Transformer Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples_in_TEM.html">7. Learning Spatial Transformations in 4D STEM</a></li>
 </ul>
 
     </div>
@@ -410,49 +407,49 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">10.1. Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-packages">10.1.1. Imports packages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloads-files">10.1.2. Downloads Files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracts-files">10.1.3. Extracts Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">6.1. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-packages">6.1.1. Imports packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloads-files">6.1.2. Downloads Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracts-files">6.1.3. Extracts Files</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">10.2. Data Preprocessing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion">10.2.1. Conversion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data-visulalization">10.2.2. Raw Data Visulalization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">10.2.3. Edge detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">6.2. Data Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion">6.2.1. Conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data-visulalization">6.2.2. Raw Data Visulalization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">6.2.3. Edge detection</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">10.3. Data Generation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-example-rotated-images">10.3.1. Visualize example rotated images</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulate-a-single-dataset">10.3.2. Formulate a single dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-example-images-in-training-data">10.3.3. Visualize example images in training data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">6.3. Data Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-example-rotated-images">6.3.1. Visualize example rotated images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulate-a-single-dataset">6.3.2. Formulate a single dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-example-images-in-training-data">6.3.3. Visualize example images in training data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-neural-network">10.4. Builds the Neural Network</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-block">10.4.1. Convolutional Block</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#idenity-block">10.4.2. Idenity Block</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-construction">10.4.3. Encoder construction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder">10.4.4. Decoder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-autoencoder">10.4.5. Builds the autoencoder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-optional-parameters-for-autoencoder">10.4.6. Sets optional parameters for autoencoder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checks-operations">10.4.7. Checks operations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiates-the-model">10.4.8. Instantiates the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-the-optimizer">10.4.9. Instantiate the optimizer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loads-pretrained-weights">10.4.10. Loads pretrained weights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">10.4.11. Loss Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-neural-network">6.4. Builds the Neural Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-block">6.4.1. Convolutional Block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#idenity-block">6.4.2. Idenity Block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-construction">6.4.3. Encoder construction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder">6.4.4. Decoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-autoencoder">6.4.5. Builds the autoencoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-optional-parameters-for-autoencoder">6.4.6. Sets optional parameters for autoencoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checks-operations">6.4.7. Checks operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiates-the-model">6.4.8. Instantiates the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-the-optimizer">6.4.9. Instantiate the optimizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loads-pretrained-weights">6.4.10. Loads pretrained weights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">6.4.11. Loss Function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">10.5. Model Training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-loader">10.5.1. Data loader</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trains-the-model">10.5.2. Trains the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">6.5. Model Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-loader">6.5.1. Data loader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trains-the-model">6.5.2. Trains the model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">10.6. Validation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generates-a-small-dataset-for">10.6.1. Generates a small dataset for</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-a-validation-iterator">10.6.2. Builds a validation iterator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sample-visualization">10.6.3. Random sample visualization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">10.6.4. Evaluation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">10.6.5. Visualize the results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">6.6. Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generates-a-small-dataset-for">6.6.1. Generates a small dataset for</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-a-validation-iterator">6.6.2. Builds a validation iterator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sample-visualization">6.6.3. Random sample visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">6.6.4. Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">6.6.5. Visualize the results</a></li>
 </ul>
 </li>
 </ul>
@@ -467,7 +464,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-cycle-consistent-spatial-transforming-autoencoders">
-<h1><span class="section-number">10. </span>Tutorial: Cycle-Consistent Spatial Transforming Autoencoders<a class="headerlink" href="#tutorial-cycle-consistent-spatial-transforming-autoencoders" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>Tutorial: Cycle-Consistent Spatial Transforming Autoencoders<a class="headerlink" href="#tutorial-cycle-consistent-spatial-transforming-autoencoders" title="Permalink to this heading">#</a></h1>
 <p>By Shuyu Qin, Joshua C. Agar</p>
 <p>Department of Mechanical Engineering and Mechanics
 Drexel University</p>
@@ -497,9 +494,9 @@ Drexel University</p>
 </details>
 </div>
 <section id="configuration">
-<h2><span class="section-number">10.1. </span>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.1. </span>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
 <section id="imports-packages">
-<h3><span class="section-number">10.1.1. </span>Imports packages<a class="headerlink" href="#imports-packages" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.1.1. </span>Imports packages<a class="headerlink" href="#imports-packages" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -519,7 +516,7 @@ Drexel University</p>
 </div>
 </section>
 <section id="downloads-files">
-<h3><span class="section-number">10.1.2. </span>Downloads Files<a class="headerlink" href="#downloads-files" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.1.2. </span>Downloads Files<a class="headerlink" href="#downloads-files" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># downloads the dataset</span>
@@ -6672,7 +6669,7 @@ Download complete.
 </div>
 </section>
 <section id="extracts-files">
-<h3><span class="section-number">10.1.3. </span>Extracts Files<a class="headerlink" href="#extracts-files" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.1.3. </span>Extracts Files<a class="headerlink" href="#extracts-files" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./cards.tar.xz&#39;</span><span class="p">)</span>
@@ -6685,9 +6682,9 @@ Download complete.
 </section>
 </section>
 <section id="data-preprocessing">
-<h2><span class="section-number">10.2. </span>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.2. </span>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this heading">#</a></h2>
 <section id="conversion">
-<h3><span class="section-number">10.2.1. </span>Conversion<a class="headerlink" href="#conversion" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.2.1. </span>Conversion<a class="headerlink" href="#conversion" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Converts images to grayscale</span>
@@ -6717,7 +6714,7 @@ Download complete.
 </div>
 </section>
 <section id="raw-data-visulalization">
-<h3><span class="section-number">10.2.2. </span>Raw Data Visulalization<a class="headerlink" href="#raw-data-visulalization" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.2.2. </span>Raw Data Visulalization<a class="headerlink" href="#raw-data-visulalization" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">card_small_1</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
@@ -6733,7 +6730,7 @@ Download complete.
 </div>
 </section>
 <section id="edge-detection">
-<h3><span class="section-number">10.2.3. </span>Edge detection<a class="headerlink" href="#edge-detection" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.2.3. </span>Edge detection<a class="headerlink" href="#edge-detection" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sobel edge detection</span>
@@ -6758,7 +6755,7 @@ Download complete.
 </section>
 </section>
 <section id="data-generation">
-<h2><span class="section-number">10.3. </span>Data Generation<a class="headerlink" href="#data-generation" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.3. </span>Data Generation<a class="headerlink" href="#data-generation" title="Permalink to this heading">#</a></h2>
 <p>This will generate a bunch of images that are rotated from the initial position</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6805,7 +6802,7 @@ Download complete.
 </div>
 </div>
 <section id="visualize-example-rotated-images">
-<h3><span class="section-number">10.3.1. </span>Visualize example rotated images<a class="headerlink" href="#visualize-example-rotated-images" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.3.1. </span>Visualize example rotated images<a class="headerlink" href="#visualize-example-rotated-images" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">card_edge_1</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
@@ -6821,7 +6818,7 @@ Download complete.
 </div>
 </section>
 <section id="formulate-a-single-dataset">
-<h3><span class="section-number">10.3.2. </span>Formulate a single dataset<a class="headerlink" href="#formulate-a-single-dataset" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.3.2. </span>Formulate a single dataset<a class="headerlink" href="#formulate-a-single-dataset" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_set</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span>
@@ -6832,7 +6829,7 @@ Download complete.
 </div>
 </section>
 <section id="visualize-example-images-in-training-data">
-<h3><span class="section-number">10.3.3. </span>Visualize example images in training data<a class="headerlink" href="#visualize-example-images-in-training-data" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.3.3. </span>Visualize example images in training data<a class="headerlink" href="#visualize-example-images-in-training-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">):</span>
@@ -6858,9 +6855,9 @@ Download complete.
 </section>
 </section>
 <section id="builds-the-neural-network">
-<h2><span class="section-number">10.4. </span>Builds the Neural Network<a class="headerlink" href="#builds-the-neural-network" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.4. </span>Builds the Neural Network<a class="headerlink" href="#builds-the-neural-network" title="Permalink to this heading">#</a></h2>
 <section id="convolutional-block">
-<h3><span class="section-number">10.4.1. </span>Convolutional Block<a class="headerlink" href="#convolutional-block" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.1. </span>Convolutional Block<a class="headerlink" href="#convolutional-block" title="Permalink to this heading">#</a></h3>
 <p>This is a standard convolutional block with ReLu. Each block has 4 layers. There is a layer normalization, and ResNet-like message passing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6896,7 +6893,7 @@ Download complete.
 </div>
 </section>
 <section id="idenity-block">
-<h3><span class="section-number">10.4.2. </span>Idenity Block<a class="headerlink" href="#idenity-block" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.2. </span>Idenity Block<a class="headerlink" href="#idenity-block" title="Permalink to this heading">#</a></h3>
 <p>This is a single convolutional layer with a layer norm and ReLu activation function</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6920,7 +6917,7 @@ Download complete.
 </div>
 </section>
 <section id="encoder-construction">
-<h3><span class="section-number">10.4.3. </span>Encoder construction<a class="headerlink" href="#encoder-construction" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.3. </span>Encoder construction<a class="headerlink" href="#encoder-construction" title="Permalink to this heading">#</a></h3>
 <p>This constructs the encoder using the convolutional and identity blocks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -7014,7 +7011,7 @@ Download complete.
 </div>
 </section>
 <section id="decoder">
-<h3><span class="section-number">10.4.4. </span>Decoder<a class="headerlink" href="#decoder" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.4. </span>Decoder<a class="headerlink" href="#decoder" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Decoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
@@ -7115,7 +7112,7 @@ Download complete.
 </div>
 </section>
 <section id="builds-the-autoencoder">
-<h3><span class="section-number">10.4.5. </span>Builds the autoencoder<a class="headerlink" href="#builds-the-autoencoder" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.5. </span>Builds the autoencoder<a class="headerlink" href="#builds-the-autoencoder" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Joint</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
@@ -7158,7 +7155,7 @@ Download complete.
 </div>
 </section>
 <section id="sets-optional-parameters-for-autoencoder">
-<h3><span class="section-number">10.4.6. </span>Sets optional parameters for autoencoder<a class="headerlink" href="#sets-optional-parameters-for-autoencoder" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.6. </span>Sets optional parameters for autoencoder<a class="headerlink" href="#sets-optional-parameters-for-autoencoder" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Size of the original image</span>
@@ -7184,7 +7181,7 @@ Download complete.
 </div>
 </section>
 <section id="checks-operations">
-<h3><span class="section-number">10.4.7. </span>Checks operations<a class="headerlink" href="#checks-operations" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.7. </span>Checks operations<a class="headerlink" href="#checks-operations" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checks if cuda is available</span>
@@ -7206,7 +7203,7 @@ Download complete.
 </div>
 </section>
 <section id="instantiates-the-model">
-<h3><span class="section-number">10.4.8. </span>Instantiates the model<a class="headerlink" href="#instantiates-the-model" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.8. </span>Instantiates the model<a class="headerlink" href="#instantiates-the-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># instantiates the encoder</span>
@@ -7229,7 +7226,7 @@ Download complete.
 </div>
 </section>
 <section id="instantiate-the-optimizer">
-<h3><span class="section-number">10.4.9. </span>Instantiate the optimizer<a class="headerlink" href="#instantiate-the-optimizer" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.9. </span>Instantiate the optimizer<a class="headerlink" href="#instantiate-the-optimizer" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">join</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">3e-5</span><span class="p">)</span>
@@ -7239,7 +7236,7 @@ Download complete.
 </div>
 </section>
 <section id="loads-pretrained-weights">
-<h3><span class="section-number">10.4.10. </span>Loads pretrained weights<a class="headerlink" href="#loads-pretrained-weights" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.10. </span>Loads pretrained weights<a class="headerlink" href="#loads-pretrained-weights" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if you would like to train this model from scratch set equal to false.</span>
@@ -7262,7 +7259,7 @@ Download complete.
 </div>
 </section>
 <section id="loss-function">
-<h3><span class="section-number">10.4.11. </span>Loss Function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.11. </span>Loss Function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loss_function</span><span class="p">(</span><span class="n">join</span><span class="p">,</span>
@@ -7313,7 +7310,7 @@ Download complete.
 </section>
 </section>
 <section id="model-training">
-<h2><span class="section-number">10.5. </span>Model Training<a class="headerlink" href="#model-training" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.5. </span>Model Training<a class="headerlink" href="#model-training" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Train</span><span class="p">(</span><span class="n">join</span><span class="p">,</span> <span class="n">encoder</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">train_iterator</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span>
@@ -7361,7 +7358,7 @@ Download complete.
 </div>
 </div>
 <section id="data-loader">
-<h3><span class="section-number">10.5.1. </span>Data loader<a class="headerlink" href="#data-loader" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.5.1. </span>Data loader<a class="headerlink" href="#data-loader" title="Permalink to this heading">#</a></h3>
 <p>Defines an iterator that serves as the data loader</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -7373,7 +7370,7 @@ Download complete.
 </div>
 </section>
 <section id="trains-the-model">
-<h3><span class="section-number">10.5.2. </span>Trains the model<a class="headerlink" href="#trains-the-model" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.5.2. </span>Trains the model<a class="headerlink" href="#trains-the-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">pretrained</span><span class="p">:</span>
@@ -7386,9 +7383,9 @@ Download complete.
 </section>
 </section>
 <section id="validation">
-<h2><span class="section-number">10.6. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.6. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h2>
 <section id="generates-a-small-dataset-for">
-<h3><span class="section-number">10.6.1. </span>Generates a small dataset for<a class="headerlink" href="#generates-a-small-dataset-for" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.6.1. </span>Generates a small dataset for<a class="headerlink" href="#generates-a-small-dataset-for" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate the test data set for validation</span>
@@ -7429,7 +7426,7 @@ Download complete.
 </div>
 </section>
 <section id="builds-a-validation-iterator">
-<h3><span class="section-number">10.6.2. </span>Builds a validation iterator<a class="headerlink" href="#builds-a-validation-iterator" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.6.2. </span>Builds a validation iterator<a class="headerlink" href="#builds-a-validation-iterator" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_iterator</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
@@ -7440,7 +7437,7 @@ Download complete.
 </div>
 </section>
 <section id="random-sample-visualization">
-<h3><span class="section-number">10.6.3. </span>Random sample visualization<a class="headerlink" href="#random-sample-visualization" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.6.3. </span>Random sample visualization<a class="headerlink" href="#random-sample-visualization" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_iterator</span><span class="p">))</span>
@@ -7450,7 +7447,7 @@ Download complete.
 </div>
 </section>
 <section id="evaluation">
-<h3><span class="section-number">10.6.4. </span>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.6.4. </span>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="n">kout</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">))</span>
@@ -7466,7 +7463,7 @@ Download complete.
 </div>
 </section>
 <section id="visualize-the-results">
-<h3><span class="section-number">10.6.5. </span>Visualize the results<a class="headerlink" href="#visualize-the-results" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.6.5. </span>Visualize the results<a class="headerlink" href="#visualize-the-results" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_</span> <span class="o">=</span> <span class="p">[</span><span class="n">card_edge_1</span><span class="p">,</span> <span class="n">card_edge_2</span><span class="p">,</span> <span class="n">card_edge_3</span><span class="p">,</span> <span class="n">card_edge_4</span><span class="p">]</span>
@@ -7546,7 +7543,7 @@ tensor([0., 0., 0., 1.], grad_fn=&lt;SelectBackward0&gt;)
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Physics Constrained Autoencoders</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Physics Constrained Autoencoders</p>
       </div>
     </a>
     <a class="right-next"
@@ -7554,7 +7551,7 @@ tensor([0., 0., 0., 1.], grad_fn=&lt;SelectBackward0&gt;)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Learning Spatial Transformations in 4D STEM</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -7576,49 +7573,49 @@ tensor([0., 0., 0., 1.], grad_fn=&lt;SelectBackward0&gt;)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">10.1. Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-packages">10.1.1. Imports packages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloads-files">10.1.2. Downloads Files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracts-files">10.1.3. Extracts Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">6.1. Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-packages">6.1.1. Imports packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloads-files">6.1.2. Downloads Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracts-files">6.1.3. Extracts Files</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">10.2. Data Preprocessing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion">10.2.1. Conversion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data-visulalization">10.2.2. Raw Data Visulalization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">10.2.3. Edge detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">6.2. Data Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion">6.2.1. Conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data-visulalization">6.2.2. Raw Data Visulalization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">6.2.3. Edge detection</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">10.3. Data Generation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-example-rotated-images">10.3.1. Visualize example rotated images</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulate-a-single-dataset">10.3.2. Formulate a single dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-example-images-in-training-data">10.3.3. Visualize example images in training data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">6.3. Data Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-example-rotated-images">6.3.1. Visualize example rotated images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulate-a-single-dataset">6.3.2. Formulate a single dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-example-images-in-training-data">6.3.3. Visualize example images in training data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-neural-network">10.4. Builds the Neural Network</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-block">10.4.1. Convolutional Block</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#idenity-block">10.4.2. Idenity Block</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-construction">10.4.3. Encoder construction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder">10.4.4. Decoder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-autoencoder">10.4.5. Builds the autoencoder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-optional-parameters-for-autoencoder">10.4.6. Sets optional parameters for autoencoder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checks-operations">10.4.7. Checks operations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiates-the-model">10.4.8. Instantiates the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-the-optimizer">10.4.9. Instantiate the optimizer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loads-pretrained-weights">10.4.10. Loads pretrained weights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">10.4.11. Loss Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-neural-network">6.4. Builds the Neural Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-block">6.4.1. Convolutional Block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#idenity-block">6.4.2. Idenity Block</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-construction">6.4.3. Encoder construction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder">6.4.4. Decoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-autoencoder">6.4.5. Builds the autoencoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-optional-parameters-for-autoencoder">6.4.6. Sets optional parameters for autoencoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checks-operations">6.4.7. Checks operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiates-the-model">6.4.8. Instantiates the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-the-optimizer">6.4.9. Instantiate the optimizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loads-pretrained-weights">6.4.10. Loads pretrained weights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">6.4.11. Loss Function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">10.5. Model Training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-loader">10.5.1. Data loader</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trains-the-model">10.5.2. Trains the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">6.5. Model Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-loader">6.5.1. Data loader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trains-the-model">6.5.2. Trains the model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">10.6. Validation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generates-a-small-dataset-for">10.6.1. Generates a small dataset for</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-a-validation-iterator">10.6.2. Builds a validation iterator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sample-visualization">10.6.3. Random sample visualization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">10.6.4. Evaluation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">10.6.5. Visualize the results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">6.6. Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generates-a-small-dataset-for">6.6.1. Generates a small dataset for</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-a-validation-iterator">6.6.2. Builds a validation iterator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sample-visualization">6.6.3. Random sample visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">6.6.4. Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">6.6.5. Visualize the results</a></li>
 </ul>
 </li>
 </ul>
