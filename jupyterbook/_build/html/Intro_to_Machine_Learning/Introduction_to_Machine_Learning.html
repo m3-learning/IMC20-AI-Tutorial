@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/Drexel_M3_Logo-01.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Unsupervised Spectral Unmixing with Autoencoders" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html" />
+    <link rel="next" title="2. Unsupervised Spectral Unmixing with Autoencoders" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html" />
     <link rel="prev" title="title: “Artificial Intelligence Methods for Microscopy Analysis and Knowledge Extraction”" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -159,15 +159,12 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html">2. Unsupervised Spectral Unmixing with Autoencoders</a></li>
 
 
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html">6. Unsupervised Spectral Unmixing with Autoencoders</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Physics_Constrained_Autoencoders/Physics_Constrained_Autoencoder.html">9. Physics Constrained Autoencoder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Cycle_Consistent_Spatial_Transformer_Autoencoder/Cycle_Consistent_Spatial_Transformer_Autoencoder.html">10. Cycle Consistent Spatial Transformer Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Physics_Constrained_Autoencoders/Physics_Constrained_Autoencoder.html">5. Physics Constrained Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cycle_Consistent_Spatial_Transformer_Autoencoder/Cycle_Consistent_Spatial_Transformer_Autoencoder.html">6. Cycle Consistent Spatial Transformer Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cycle_Consistent_Spatial_Transformer_Autoencoder/Examples_in_TEM.html">7. Learning Spatial Transformations in 4D STEM</a></li>
 </ul>
 
     </div>
@@ -410,13 +407,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Introduction to Machine Learning</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-stem-image-file-and-plot-it">2. Load a STEM image file and plot it</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines">3. 1. Support Vector Machines</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-decision-boundary-surface">4. Plotting the Decision boundary surface</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">5. Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-stem-image-file-and-plot-it">1.1. Load a STEM image file and plot it</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines">1.2. 1. Support Vector Machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-decision-boundary-surface">1.3. Plotting the Decision boundary surface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">1.4. Exercise</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -1106,9 +1101,8 @@ You don&#39;t have gwyfile installed.     If you wish to open .gwy files, you wi
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="load-a-stem-image-file-and-plot-it">
-<h1><span class="section-number">2. </span>Load a STEM image file and plot it<a class="headerlink" href="#load-a-stem-image-file-and-plot-it" title="Permalink to this heading">#</a></h1>
+<section id="load-a-stem-image-file-and-plot-it">
+<h2><span class="section-number">1.1. </span>Load a STEM image file and plot it<a class="headerlink" href="#load-a-stem-image-file-and-plot-it" title="Permalink to this heading">#</a></h2>
 <p>This is an example of a STEM image of a BaTiO<sub>3</sub> thin film taken by Albina Borisevich.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5991,8 +5985,8 @@ if (IPython.notebook.kernel !== null) {
 <p>It woudl be good to automatically classify which of these image patches come from the film and which comes from the substrate.</p>
 <p>We can do this using a classification algorithm and supervised ML….</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="support-vector-machines">
-<h1><span class="section-number">3. </span>1. Support Vector Machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this heading">#</a></h1>
+<section id="support-vector-machines">
+<h2><span class="section-number">1.2. </span>1. Support Vector Machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this heading">#</a></h2>
 <p>=====================================</p>
 <p>Support Vector Machines are linear classifiers that are easy to understand. Let’s start by simulating some data, and then using the SVM implementation in scikit-learn in order to separate the data into two classes.</p>
 <div class="cell docutils container">
@@ -7024,8 +7018,8 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="plotting-the-decision-boundary-surface">
-<h1><span class="section-number">4. </span>Plotting the Decision boundary surface<a class="headerlink" href="#plotting-the-decision-boundary-surface" title="Permalink to this heading">#</a></h1>
+<section id="plotting-the-decision-boundary-surface">
+<h2><span class="section-number">1.3. </span>Plotting the Decision boundary surface<a class="headerlink" href="#plotting-the-decision-boundary-surface" title="Permalink to this heading">#</a></h2>
 <p>We can plot the decision boundary using the code below. This code is directly taken from the example in the sklean page, i.e. <a class="reference external" href="http://scikit-learn.org/stable/auto_examples/svm/plot_iris.html">http://scikit-learn.org/stable/auto_examples/svm/plot_iris.html</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -8040,8 +8034,8 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="exercise">
-<h1><span class="section-number">5. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h1>
+<section id="exercise">
+<h2><span class="section-number">1.4. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Vary the C parameter and see how the decision boundary surface changes.</p></li>
 <li><p>Play with the kernel parameter, and see what effects this has.</p></li>
@@ -8054,6 +8048,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -8101,7 +8096,7 @@ if (IPython.notebook.kernel !== null) {
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Unsupervised Spectral Unmixing with Autoencoders</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Unsupervised Spectral Unmixing with Autoencoders</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -8123,13 +8118,11 @@ if (IPython.notebook.kernel !== null) {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Introduction to Machine Learning</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-stem-image-file-and-plot-it">2. Load a STEM image file and plot it</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines">3. 1. Support Vector Machines</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-decision-boundary-surface">4. Plotting the Decision boundary surface</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">5. Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-stem-image-file-and-plot-it">1.1. Load a STEM image file and plot it</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines">1.2. 1. Support Vector Machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-decision-boundary-surface">1.3. Plotting the Decision boundary surface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">1.4. Exercise</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>9. Physics Constrained Autoencoders &#8212; Artificial Intelligence Methods for Microscopy Analysis and Knowledge Extraction</title>
+    <title>5. Physics Constrained Autoencoders &#8212; Artificial Intelligence Methods for Microscopy Analysis and Knowledge Extraction</title>
   
   
   
@@ -70,8 +70,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/Drexel_M3_Logo-01.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Tutorial: Cycle-Consistent Spatial Transforming Autoencoders" href="../Cycle_Consistent_Spatial_Transformer_Autoencoder/Cycle_Consistent_Spatial_Transformer_Autoencoder.html" />
-    <link rel="prev" title="6. Unsupervised Spectral Unmixing with Autoencoders" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html" />
+    <link rel="next" title="6. Tutorial: Cycle-Consistent Spatial Transforming Autoencoders" href="../Cycle_Consistent_Spatial_Transformer_Autoencoder/Cycle_Consistent_Spatial_Transformer_Autoencoder.html" />
+    <link rel="prev" title="2. Unsupervised Spectral Unmixing with Autoencoders" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,15 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Intro_to_Machine_Learning/Introduction_to_Machine_Learning.html">1. Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html">2. Unsupervised Spectral Unmixing with Autoencoders</a></li>
 
 
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Unsupervised_Learning_with_AEs/Unsupervised_Learning_with_Autoencoders.html">6. Unsupervised Spectral Unmixing with Autoencoders</a></li>
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Physics Constrained Autoencoder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Cycle_Consistent_Spatial_Transformer_Autoencoder/Cycle_Consistent_Spatial_Transformer_Autoencoder.html">10. Cycle Consistent Spatial Transformer Autoencoder</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Physics Constrained Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cycle_Consistent_Spatial_Transformer_Autoencoder/Cycle_Consistent_Spatial_Transformer_Autoencoder.html">6. Cycle Consistent Spatial Transformer Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cycle_Consistent_Spatial_Transformer_Autoencoder/Examples_in_TEM.html">7. Learning Spatial Transformations in 4D STEM</a></li>
 </ul>
 
     </div>
@@ -415,46 +412,46 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-packages">9.1. Imports Packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-some-data-based-on-the-image">9.2. Generating some data based on the image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-non-linear-function">9.2.1. Define a non-linear function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-packages">5.1. Imports Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-some-data-based-on-the-image">5.2. Generating some data based on the image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-non-linear-function">5.2.1. Define a non-linear function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-examples">9.3. Visualize examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrent-neural-network-autoencoders">9.4. Recurrent Neural Network Autoencoders</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-autoencoder">9.4.1. Builds the autoencoder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-dataloader">9.4.2. Builds the dataloader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-examples">5.3. Visualize examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrent-neural-network-autoencoders">5.4. Recurrent Neural Network Autoencoders</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-autoencoder">5.4.1. Builds the autoencoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-dataloader">5.4.2. Builds the dataloader</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-reconstruction">9.5. Visualize the reconstruction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-validation-data">9.6. Generating Validation Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loads-and-image-of-my-dog-nala">9.6.1. Loads and image of my dog Nala</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displays-the-image">9.6.2. Displays the image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generates-the-data-from-rgb-sampling">9.6.3. Generates the data from RGB sampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-learned-results">9.6.4. Visualize the learned results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-reconstruction">5.5. Visualize the reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-validation-data">5.6. Generating Validation Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loads-and-image-of-my-dog-nala">5.6.1. Loads and image of my dog Nala</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displays-the-image">5.6.2. Displays the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generates-the-data-from-rgb-sampling">5.6.3. Generates the data from RGB sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-learned-results">5.6.4. Visualize the learned results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-try-a-bigger-model">9.7. Let’s try a bigger model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-model">9.7.1. Builds the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-try-a-bigger-model">5.7. Let’s try a bigger model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-model">5.7.1. Builds the model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">9.8. Training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">9.8.1. Visualize the reconstruction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.8.2. Visualize the learned results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">5.8. Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.8.1. Visualize the reconstruction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.8.2. Visualize the learned results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-constrained-neural-network">9.9. Physics constrained neural network</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-model">9.9.1. Building the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataloader">9.9.2. Dataloader</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.9.3. Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">9.9.4. Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-constrained-neural-network">5.9. Physics constrained neural network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-model">5.9.1. Building the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataloader">5.9.2. Dataloader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.9.3. Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">5.9.4. Validation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-with-a-better-optimizer-adahessian">9.10. Try with a better optimizer AdaHessian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.10.1. Builds the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.10.2. Dataloader</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">9.10.3. Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">9.10.4. Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-with-a-better-optimizer-adahessian">5.10. Try with a better optimizer AdaHessian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.10.1. Builds the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.10.2. Dataloader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.10.3. Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">5.10.4. Visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -469,7 +466,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="physics-constrained-autoencoders">
-<h1><span class="section-number">9. </span>Physics Constrained Autoencoders<a class="headerlink" href="#physics-constrained-autoencoders" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Physics Constrained Autoencoders<a class="headerlink" href="#physics-constrained-autoencoders" title="Permalink to this heading">#</a></h1>
 <p>By Mary Ye<span class="math notranslate nohighlight">\(^1\)</span>, Joshua C. Agar<span class="math notranslate nohighlight">\(^2\)</span></p>
 <p><span class="math notranslate nohighlight">\(^1\)</span> Department of Computer science and Engineering, Lehigh University
 <span class="math notranslate nohighlight">\(^2\)</span> Department of Mechanical Engineering and Mechanics, Drexel University</p>
@@ -487,7 +484,7 @@ document.write(`
 </li>
 </ul>
 <section id="imports-packages">
-<h2><span class="section-number">9.1. </span>Imports Packages<a class="headerlink" href="#imports-packages" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>Imports Packages<a class="headerlink" href="#imports-packages" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install m3_learning
@@ -828,9 +825,9 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="generating-some-data-based-on-the-image">
-<h2><span class="section-number">9.2. </span>Generating some data based on the image<a class="headerlink" href="#generating-some-data-based-on-the-image" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.2. </span>Generating some data based on the image<a class="headerlink" href="#generating-some-data-based-on-the-image" title="Permalink to this heading">#</a></h2>
 <section id="define-a-non-linear-function">
-<h3><span class="section-number">9.2.1. </span>Define a non-linear function<a class="headerlink" href="#define-a-non-linear-function" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.2.1. </span>Define a non-linear function<a class="headerlink" href="#define-a-non-linear-function" title="Permalink to this heading">#</a></h3>
 <center> $$ y = A sin(2\theta f+ \phi)$$ </center>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1002,7 +999,7 @@ tensorflow seed was set to 42
 </section>
 </section>
 <section id="visualize-examples">
-<h2><span class="section-number">9.3. </span>Visualize examples<a class="headerlink" href="#visualize-examples" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>Visualize examples<a class="headerlink" href="#visualize-examples" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
@@ -1019,7 +1016,7 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="recurrent-neural-network-autoencoders">
-<h2><span class="section-number">9.4. </span>Recurrent Neural Network Autoencoders<a class="headerlink" href="#recurrent-neural-network-autoencoders" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span>Recurrent Neural Network Autoencoders<a class="headerlink" href="#recurrent-neural-network-autoencoders" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>It is important to consider the temporal domain</p></li>
 <li><p>This can be improved by using a recurrent neural network that processes each time step sequentially.</p></li>
@@ -1028,7 +1025,7 @@ tensorflow seed was set to 42
 <p><img alt="" src="https://github.com/jagar2/AI_For_Atoms_Autoencoder_Tutorial/blob/main/img/Autoencoder_Med.png?raw=true" /></p>
 <p><img alt="" src="https://github.com/jagar2/AI_For_Atoms_Autoencoder_Tutorial/blob/main/img/LSTM%20Node.png?raw=true" /></p>
 <section id="builds-the-autoencoder">
-<h3><span class="section-number">9.4.1. </span>Builds the autoencoder<a class="headerlink" href="#builds-the-autoencoder" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.4.1. </span>Builds the autoencoder<a class="headerlink" href="#builds-the-autoencoder" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Encoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
@@ -1139,7 +1136,7 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="builds-the-dataloader">
-<h3><span class="section-number">9.4.2. </span>Builds the dataloader<a class="headerlink" href="#builds-the-dataloader" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.4.2. </span>Builds the dataloader<a class="headerlink" href="#builds-the-dataloader" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># constructs a dataloader for training</span>
@@ -9189,7 +9186,7 @@ tensorflow seed was set to 42
 </section>
 </section>
 <section id="visualize-the-reconstruction">
-<h2><span class="section-number">9.5. </span>Visualize the reconstruction<a class="headerlink" href="#visualize-the-reconstruction" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.5. </span>Visualize the reconstruction<a class="headerlink" href="#visualize-the-reconstruction" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># computes an example reconstruction for a mini batch</span>
@@ -9225,13 +9222,13 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="generating-validation-data">
-<h2><span class="section-number">9.6. </span>Generating Validation Data<a class="headerlink" href="#generating-validation-data" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.6. </span>Generating Validation Data<a class="headerlink" href="#generating-validation-data" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>We want to generate a hyperspectral image</p></li>
 <li><p>This can be done by taking the RGB values of an image and using them as parameters for a function</p></li>
 </ul>
 <section id="loads-and-image-of-my-dog-nala">
-<h3><span class="section-number">9.6.1. </span>Loads and image of my dog Nala<a class="headerlink" href="#loads-and-image-of-my-dog-nala" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.6.1. </span>Loads and image of my dog Nala<a class="headerlink" href="#loads-and-image-of-my-dog-nala" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Painting by <em>Irene Dogmatic</em></p></li>
 </ul>
@@ -9252,7 +9249,7 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="displays-the-image">
-<h3><span class="section-number">9.6.2. </span>Displays the image<a class="headerlink" href="#displays-the-image" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.6.2. </span>Displays the image<a class="headerlink" href="#displays-the-image" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -9268,7 +9265,7 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="generates-the-data-from-rgb-sampling">
-<h3><span class="section-number">9.6.3. </span>Generates the data from RGB sampling<a class="headerlink" href="#generates-the-data-from-rgb-sampling" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.6.3. </span>Generates the data from RGB sampling<a class="headerlink" href="#generates-the-data-from-rgb-sampling" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Converts the image into parameters within the generated range</span>
@@ -9320,7 +9317,7 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="visualize-the-learned-results">
-<h3><span class="section-number">9.6.4. </span>Visualize the learned results<a class="headerlink" href="#visualize-the-learned-results" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.6.4. </span>Visualize the learned results<a class="headerlink" href="#visualize-the-learned-results" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize the learned embeddings</span>
@@ -9351,9 +9348,9 @@ tensorflow seed was set to 42
 </section>
 </section>
 <section id="let-s-try-a-bigger-model">
-<h2><span class="section-number">9.7. </span>Let’s try a bigger model<a class="headerlink" href="#let-s-try-a-bigger-model" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.7. </span>Let’s try a bigger model<a class="headerlink" href="#let-s-try-a-bigger-model" title="Permalink to this heading">#</a></h2>
 <section id="builds-the-model">
-<h3><span class="section-number">9.7.1. </span>Builds the model<a class="headerlink" href="#builds-the-model" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.7.1. </span>Builds the model<a class="headerlink" href="#builds-the-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span>
@@ -9399,7 +9396,7 @@ tensorflow seed was set to 42
 </section>
 </section>
 <section id="training">
-<h2><span class="section-number">9.8. </span>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.8. </span>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># trains the model</span>
@@ -17421,7 +17418,7 @@ tensorflow seed was set to 42
 </details>
 </div>
 <section id="id1">
-<h3><span class="section-number">9.8.1. </span>Visualize the reconstruction<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.8.1. </span>Visualize the reconstruction<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># computes an example reconstruction for a minibatch</span>
@@ -17454,7 +17451,7 @@ tensorflow seed was set to 42
 </ul>
 </section>
 <section id="id2">
-<h3><span class="section-number">9.8.2. </span>Visualize the learned results<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.8.2. </span>Visualize the learned results<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># builds the spectra from the parameters</span>
@@ -17517,9 +17514,9 @@ tensorflow seed was set to 42
 </section>
 </section>
 <section id="physics-constrained-neural-network">
-<h2><span class="section-number">9.9. </span>Physics constrained neural network<a class="headerlink" href="#physics-constrained-neural-network" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.9. </span>Physics constrained neural network<a class="headerlink" href="#physics-constrained-neural-network" title="Permalink to this heading">#</a></h2>
 <section id="building-the-model">
-<h3><span class="section-number">9.9.1. </span>Building the model<a class="headerlink" href="#building-the-model" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.9.1. </span>Building the model<a class="headerlink" href="#building-the-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DensePhysLarger</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
@@ -17702,7 +17699,7 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="dataloader">
-<h3><span class="section-number">9.9.2. </span>Dataloader<a class="headerlink" href="#dataloader" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.9.2. </span>Dataloader<a class="headerlink" href="#dataloader" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># builds the dataloader</span>
@@ -17716,7 +17713,7 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="id3">
-<h3><span class="section-number">9.9.3. </span>Training<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.9.3. </span>Training<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -18443,7 +18440,7 @@ epoch : 197/200, recon loss = 0.01287104
 </div>
 </section>
 <section id="validation">
-<h3><span class="section-number">9.9.4. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.9.4. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectra_generated</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">train_batch</span><span class="o">.</span><span class="n">cuda</span><span class="p">())</span>
@@ -18517,7 +18514,7 @@ epoch : 197/200, recon loss = 0.01287104
 </section>
 </section>
 <section id="try-with-a-better-optimizer-adahessian">
-<h2><span class="section-number">9.10. </span>Try with a better optimizer AdaHessian<a class="headerlink" href="#try-with-a-better-optimizer-adahessian" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.10. </span>Try with a better optimizer AdaHessian<a class="headerlink" href="#try-with-a-better-optimizer-adahessian" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>There are better optimizers than ADAM that use second-order information</p></li>
 </ul>
@@ -18732,7 +18729,7 @@ epoch : 197/200, recon loss = 0.01287104
 </div>
 </div>
 <section id="id4">
-<h3><span class="section-number">9.10.1. </span>Builds the model<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.10.1. </span>Builds the model<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_vector</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -18749,7 +18746,7 @@ epoch : 197/200, recon loss = 0.01287104
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">9.10.2. </span>Dataloader<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.10.2. </span>Dataloader<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># builds the dataloader</span>
@@ -18763,7 +18760,7 @@ epoch : 197/200, recon loss = 0.01287104
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">9.10.3. </span>Training<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.10.3. </span>Training<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -19619,7 +19616,7 @@ tensorflow seed was set to 42
 </div>
 </section>
 <section id="visualization">
-<h3><span class="section-number">9.10.4. </span>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.10.4. </span>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectra_generated</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">train_batch</span><span class="o">.</span><span class="n">cuda</span><span class="p">())</span>
@@ -19731,7 +19728,7 @@ tensorflow seed was set to 42
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Unsupervised Spectral Unmixing with Autoencoders</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Unsupervised Spectral Unmixing with Autoencoders</p>
       </div>
     </a>
     <a class="right-next"
@@ -19739,7 +19736,7 @@ tensorflow seed was set to 42
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Tutorial: Cycle-Consistent Spatial Transforming Autoencoders</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Tutorial: Cycle-Consistent Spatial Transforming Autoencoders</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -19761,46 +19758,46 @@ tensorflow seed was set to 42
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-packages">9.1. Imports Packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-some-data-based-on-the-image">9.2. Generating some data based on the image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-non-linear-function">9.2.1. Define a non-linear function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-packages">5.1. Imports Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-some-data-based-on-the-image">5.2. Generating some data based on the image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-non-linear-function">5.2.1. Define a non-linear function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-examples">9.3. Visualize examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrent-neural-network-autoencoders">9.4. Recurrent Neural Network Autoencoders</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-autoencoder">9.4.1. Builds the autoencoder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-dataloader">9.4.2. Builds the dataloader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-examples">5.3. Visualize examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrent-neural-network-autoencoders">5.4. Recurrent Neural Network Autoencoders</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-autoencoder">5.4.1. Builds the autoencoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-dataloader">5.4.2. Builds the dataloader</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-reconstruction">9.5. Visualize the reconstruction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-validation-data">9.6. Generating Validation Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loads-and-image-of-my-dog-nala">9.6.1. Loads and image of my dog Nala</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displays-the-image">9.6.2. Displays the image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generates-the-data-from-rgb-sampling">9.6.3. Generates the data from RGB sampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-learned-results">9.6.4. Visualize the learned results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-reconstruction">5.5. Visualize the reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-validation-data">5.6. Generating Validation Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loads-and-image-of-my-dog-nala">5.6.1. Loads and image of my dog Nala</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displays-the-image">5.6.2. Displays the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generates-the-data-from-rgb-sampling">5.6.3. Generates the data from RGB sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-learned-results">5.6.4. Visualize the learned results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-try-a-bigger-model">9.7. Let’s try a bigger model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-model">9.7.1. Builds the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-try-a-bigger-model">5.7. Let’s try a bigger model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#builds-the-model">5.7.1. Builds the model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">9.8. Training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">9.8.1. Visualize the reconstruction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.8.2. Visualize the learned results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">5.8. Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.8.1. Visualize the reconstruction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.8.2. Visualize the learned results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-constrained-neural-network">9.9. Physics constrained neural network</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-model">9.9.1. Building the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataloader">9.9.2. Dataloader</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.9.3. Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">9.9.4. Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-constrained-neural-network">5.9. Physics constrained neural network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-model">5.9.1. Building the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataloader">5.9.2. Dataloader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.9.3. Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">5.9.4. Validation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-with-a-better-optimizer-adahessian">9.10. Try with a better optimizer AdaHessian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.10.1. Builds the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.10.2. Dataloader</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">9.10.3. Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">9.10.4. Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-with-a-better-optimizer-adahessian">5.10. Try with a better optimizer AdaHessian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.10.1. Builds the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.10.2. Dataloader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.10.3. Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">5.10.4. Visualization</a></li>
 </ul>
 </li>
 </ul>
